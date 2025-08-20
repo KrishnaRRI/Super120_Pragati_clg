@@ -1,0 +1,23 @@
+
+def subset(nums,target):
+    nums.sort(reverse = True) #ordering
+    def backtrack(start , path , sum):
+        if sum == target:   # constrains
+            return True
+        for i in range(start,len(nums) ):
+            if sum + nums[i]>target:# pruning
+                continue
+            if backtrack(i+1,path,sum+nums[i]):
+                return True
+
+
+    if backtrack(0 , [] , 0):
+        return True
+    else:
+        return False
+
+nums = [2,3,5,7]
+
+target = 11
+res = subset(nums,target)
+print(res)
