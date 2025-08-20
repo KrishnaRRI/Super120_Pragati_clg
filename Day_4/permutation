@@ -1,0 +1,14 @@
+class Solution(object):
+    def permute(self, nums):
+        res = []
+        def backtrack(nums,path):
+            if not nums:
+                res.append(path)
+                return
+            for i in range(len(nums)):
+                new_nums = nums[:i] + nums [i+1:]
+                backtrack(new_nums ,path + [nums[i]])
+        
+        backtrack(nums,[])
+        return res
+        
